@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filtro de Palabras</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Filtrar Palabras</h1>
+        <div class="form-group">
+            <label for="filterInput">Ingresa texto para filtrar:</label>
+            <input type="text" id="filterInput" placeholder="Ej: man">
+        </div>
+        <button id="filterButton">Filtrar</button>
+        <p id="error-message" style="display: none;"></p>
+    </div>
+
+    <div class="container" id="word-list-container">
+        <h2>Palabras Disponibles</h2>
+        <ul id="displayWordList">
+        </ul>
+    </div>
+</body>
+</html>
