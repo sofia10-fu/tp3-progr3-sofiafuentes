@@ -4,24 +4,23 @@ html
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora Interactiva</title>
+    <title>Calculadora de Operaciones</title>
     <style>
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Arial', sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 80vh;
-            background-color: #f4f7f6;
+            background-color: #f4f4f4;
             margin: 0;
         }
         .calculator-container {
-            background-color: #ffffff;
+            background-color: #fff;
             padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             text-align: center;
-            width: 350px;
         }
         h1 {
             color: #333;
@@ -38,83 +37,71 @@ html
             font-weight: bold;
         }
         input[type="number"], select {
-            width: calc(100% - 12px); /* Ajuste para padding */
+            width: calc(100% - 12px); /* Ajuste para el padding */
             padding: 10px;
+            margin-top: 5px;
             border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 16px;
-            box-sizing: border-box; /* Asegura que el padding no afecte el ancho total */
+            border-radius: 4px;
+            box-sizing: border-box; /* Para que el padding no afecte el ancho total */
         }
         button {
             background-color: #007bff;
             color: white;
-            padding: 12px 20px;
+            padding: 10px 20px;
             border: none;
-            border-radius: 5px;
+            border-radius: 4px;
             cursor: pointer;
             font-size: 16px;
-            transition: background-color 0.3s ease;
             margin-top: 10px;
+            transition: background-color 0.3s ease;
         }
-        button:hover:not(:disabled) {
+        button:hover {
             background-color: #0056b3;
         }
         button:disabled {
             background-color: #cccccc;
             cursor: not-allowed;
         }
-        #result {
+        #resultado {
             margin-top: 20px;
-            font-size: 18px;
+            font-size: 1.2em;
+            color: #333;
             font-weight: bold;
-            color: #28a745;
-            min-height: 25px; /* Para evitar saltos de layout */
-        }
-        .error-message {
-            color: red;
-            font-size: 14px;
-            margin-top: 5px;
         }
     </style>
 </head>
 <body>
-     <div class="calculator-container">
-        <h1>Calculadora Básica</h1>
+    <div class="calculator-container">
+        <h1>Calculadora de Operaciones</h1>
 
-        <!-- Formulario para ingresar números y seleccionar operación -->
-        <form id="calculatorForm">
-            <div class="form-group">
-                <label for="number1">Número 1:</label>
-                <!-- Campo de entrada para el primer número -->
-                <input type="number" id="number1" name="number1" required>
-            </div>
+        <div class="form-group">
+            <label for="numero1">Operación 1 (Número):</label>
+            <!-- Campo para ingresar el primer número -->
+            <input type="number" id="numero1" placeholder="Ingresa el primer número">
+        </div>
 
-            <div class="form-group">
-                <label for="operation">Operación:</label>
-                <!-- Lista desplegable para seleccionar la operación -->
-                <select id="operation" name="operation" required>
-                    <option value="">-- Selecciona una operación --</option>
-                    <option value="suma">Suma (+)</option>
-                    <option value="resta">Resta (-)</option>
-                    <option value="multiplicacion">Multiplicación (*)</option>
-                    <option value="division">División (/)</option>
-                </select>
-            </div>
+        <div class="form-group">
+            <label for="operacion">Operación:</label>
+            <!-- Lista desplegable para seleccionar la operación -->
+            <select id="operacion">
+                <option value="suma">Suma (+)</option>
+                <option value="resta">Resta (-)</option>
+                <option value="multiplicacion">Multiplicación (*)</option>
+                <option value="division">División (/)</option>
+            </select>
+        </div>
 
-            <div class="form-group">
-                <label for="number2">Número 2:</label>
-                <!-- Campo de entrada para el segundo número -->
-                <input type="number" id="number2" name="number2" required>
-                <!-- Mensaje de error para la división por cero -->
-                <div id="divisionByZeroError" class="error-message"></div>
-            </div>
+        <div class="form-group">
+            <label for="numero2">Operación 2 (Número):</label>
+            <!-- Campo para ingresar el segundo número -->
+            <input type="number" id="numero2" placeholder="Ingresa el segundo número">
+        </div>
 
-            <!-- Botón para ejecutar el cálculo -->
-            <button type="button" id="calculateBtn">Calcular</button>
-        </form>
+        <!-- Botón para ejecutar el cálculo -->
+        <button id="calcularBtn">Calcular</button>
 
-        <!-- Área donde se mostrará el resultado -->
-        <div id="result"></div>
+        <!-- Área para mostrar el resultado -->
+        <div id="resultado"></div>
     </div>
 
     <!-- Enlazamos nuestro archivo JavaScript -->
