@@ -1,25 +1,123 @@
+html
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Filtro de Palabras</title>
+    <title>Calculadora Interactiva</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 80vh;
+            background-color: #f4f7f6;
+            margin: 0;
+        }
+        .calculator-container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 350px;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+            font-weight: bold;
+        }
+        input[type="number"], select {
+            width: calc(100% - 12px); /* Ajuste para padding */
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            box-sizing: border-box; /* Asegura que el padding no afecte el ancho total */
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+            margin-top: 10px;
+        }
+        button:hover:not(:disabled) {
+            background-color: #0056b3;
+        }
+        button:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #28a745;
+            min-height: 25px; /* Para evitar saltos de layout */
+        }
+        .error-message {
+            color: red;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Filtrar Palabras</h1>
-        <div class="form-group">
-            <label for="filterInput">Ingresa texto para filtrar:</label>
-            <input type="text" id="filterInput" placeholder="Ej: man">
-        </div>
-        <button id="filterButton">Filtrar</button>
-        <p id="error-message" style="display: none;"></p>
+     <div class="calculator-container">
+        <h1>Calculadora Básica</h1>
+
+        <!-- Formulario para ingresar números y seleccionar operación -->
+        <form id="calculatorForm">
+            <div class="form-group">
+                <label for="number1">Número 1:</label>
+                <!-- Campo de entrada para el primer número -->
+                <input type="number" id="number1" name="number1" required>
+            </div>
+
+            <div class="form-group">
+                <label for="operation">Operación:</label>
+                <!-- Lista desplegable para seleccionar la operación -->
+                <select id="operation" name="operation" required>
+                    <option value="">-- Selecciona una operación --</option>
+                    <option value="suma">Suma (+)</option>
+                    <option value="resta">Resta (-)</option>
+                    <option value="multiplicacion">Multiplicación (*)</option>
+                    <option value="division">División (/)</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="number2">Número 2:</label>
+                <!-- Campo de entrada para el segundo número -->
+                <input type="number" id="number2" name="number2" required>
+                <!-- Mensaje de error para la división por cero -->
+                <div id="divisionByZeroError" class="error-message"></div>
+            </div>
+
+            <!-- Botón para ejecutar el cálculo -->
+            <button type="button" id="calculateBtn">Calcular</button>
+        </form>
+
+        <!-- Área donde se mostrará el resultado -->
+        <div id="result"></div>
     </div>
 
-    <div class="container" id="word-list-container">
-        <h2>Palabras Disponibles</h2>
-        <ul id="displayWordList">
-        </ul>
-    </div>
+    <!-- Enlazamos nuestro archivo JavaScript -->
+    <script src="script.js"></script>
 </body>
 </html>
