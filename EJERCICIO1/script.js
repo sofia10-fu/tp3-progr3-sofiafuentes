@@ -1,54 +1,62 @@
-<script>
-    // 1. Obtención de Elementos HTML
-    const numero1Input = document.getElementById('numero1');
-    const numero2Input = document.getElementById('numero2');
-    const operacionSelect = document.getElementById('operacion');
-    const calcularBtn = document.getElementById('calcularBtn');
-    const resultadoDiv = document.getElementById('resultado');
+// script.js
 
-    // 2. Función para Realizar la Operación Matemática
-    function realizarOperacion() {
-        const num1 = parseFloat(numero1Input.value); // Obtiene el valor del input y lo convierte a número
-        const num2 = parseFloat(numero2Input.value); // Obtiene el valor del input y lo convierte a número
-        const operacion = operacionSelect.value;     // Obtiene el valor de la opción seleccionada
-        let resultado;
+// Obtenemos referencias a los elementos del DOM con los que vamos a interactuar:
+const number1Input = document.getElementById('number1');
+const operationSelect = document.getElementById('operation');
+const number2Input = document.getElementById('number2');
+const calculateBtn = document.getElementById('calculateBtn');
+const resultDiv = document.getElementById('result');
+const divisionByZeroErrorDiv = document.getElementById('divisionByZeroError');
 
-        switch (operacion) {
-            case 'suma':
-                resultado = num1 + num2;
-                break;
-            case 'resta':
-                resultado = num1 - num2;
-                break;
-            case 'multiplicacion':
-                resultado = num1 * num2;
-                break;
-            case 'division':
-                if (num2 === 0) {
-                    resultado = 'No se puede dividir por cero'; // Manejo de la división por cero
-                } else {
-                    resultado = num1 / num2;
-                }
-                break;
-            default:
-                resultado = 'Operación inválida'; // Mensaje por si hay una operación no reconocida (poco probable aquí)
-        }
-        resultadoDiv.textContent = `Resultado: ${resultado}`; // Actualiza el texto en el div de resultado
+// --- Función para realizar el cálculo ---
+function performCalculation() {
+    // 1. Obtener los valores de los campos de entrada.
+    // Usamos parseFloat para asegurarnos de que los valores se traten como números,
+    // ya que los inputs por defecto devuelven strings.
+    const num1 = parseFloat(number1Input.value);
+    const num2 = parseFloat(number2Input.value);
+    const operation = operationSelect.value; // Obtenemos la operación seleccionada (string).
+
+    // 2. Validar que los números sean válidos (no NaN - Not a Number).
+    // Esto ocurre si el usuario ingresa algo que no es un número o deja los campos vacíos.
+    if (isNaN(num1) || isNaN(num2)) {
+        resultDiv.textContent = 'Por favor, ingresa números válidos en ambos campos.';
+        resultDiv.style.color = 'red'; // Cambiamos el color para indicar un error.
+        return; // Salimos de la función si hay un error de validación.
     }
 
-    // 3. Función para Verificar la Operación de División y Habilitar/Deshabilitar el Botón
-    function verificarDivision() {
-        if (operacionSelect.value === 'division') {
-            calcularBtn.disabled = true; // Deshabilita el botón si la operación es división
-        } else {
-            calcularBtn.disabled = false; // Habilita el botón para otras operaciones
-        }
+    // 3. Realizar la operación seleccionada.
+    let result; // Declaramos una variable para almacenar el resultado.
+    switch (operation) {
+        case 'suma':
+            result = num1 + num2;
+            break; // Terminamos el caso de 'suma'.
+        case 'resta':
+            result = num1 - num2;
+            break; // Terminamos el caso de 'resta'.
+        case 'multiplicacion':
+            result = num1 * num2;
+            break; // Terminamos el caso de 'multiplicacion'.
+        case 'division':
+            // --- Condición especial: División por cero ---
+            if (num2 === 0) {
+                // Si el segundo número es 0, mostramos un mensaje de error y no calculamos.
+                divisionByZeroErrorDiv.textContent = 'No se puede dividir por cero.';
+                resultDiv.textContent = ''; // Limpiamos cualquier resultado anterior.
+                return; // Salimos de la función.
+            } else {
+                result = num1 / num2;
+                divisionByZeroErrorDiv.textContent = ''; // Limpiamos el mensaje de error si ya no aplica.
+            }
+            break; // Terminamos el caso de 'division'.
+        default:
+            // Si no se ha seleccionado ninguna operación (el valor por defecto del select).
+            resultDiv.textContent = 'Por favor, selecciona una operación.';
+            resultDiv.style.color = 'orange';
+            return; // Salimos de la función.
     }
 
-    // 4. Event Listeners (Escuchadores de Eventos)
-    calcularBtn.addEventListener('click', realizarOperacion); // Cuando se hace clic en el botón "Calcular", llama a realizarOperacion
-    operacionSelect.addEventListener('change', verificarDivision); // Cuando cambia la opción en el selector, llama a verificarDivision
-
-    // 5. Inicialización
-    verificarDivision(); // Llama a la función al cargar la página para establecer el estado inicial del botón
-</script>
+    // 4. Mostrar el resultado.
+    // Si llegamos hasta aquí, significa que el cálculo fue exitoso.
+    resultDiv.textContent = El resultado es: ${result};
+    resultDiv.style.color = '#2
