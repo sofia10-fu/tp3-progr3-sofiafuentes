@@ -1,7 +1,7 @@
 // script.js
 
 // 1. Lista de palabras predefinidas
-const words = ["manzana", "banana", "pera", "durazno", "frutilla", "mango", "naranja", "sandia", "uva", "kiwi"];
+const words = ["manzana", "banana", "pera", "durazno", "frutilla", "mango"];
 
 // 2. Obtener referencias a los elementos HTML
 const filterInput = document.getElementById('filterInput'); // Campo de texto para el filtro
