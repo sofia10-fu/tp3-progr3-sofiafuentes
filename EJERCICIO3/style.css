@@ -1,0 +1,81 @@
+/* style.css */
+
+/* Estilos para el cuerpo de la página */
+body {
+    font-family: 'Inter', sans-serif; /* Usamos la fuente Inter para todo el texto */
+    background-color: #f0f4f8; /* Un fondo suave para la página */
+    color: #334155; /* Color de texto principal para la mayoría de los elementos */
+    display: flex; /* Usamos flexbox para centrar el contenido */
+    justify-content: center; /* Centra el contenido horizontalmente */
+    align-items: flex-start; /* Alinea el contenido al inicio verticalmente */
+    min-height: 100vh; /* Ocupa al menos el 100% de la altura de la ventana (viewport height) */
+    padding: 20px; /* Añade un relleno alrededor del contenido */
+    box-sizing: border-box; /* Incluye el padding y el border en el tamaño total del elemento */
+}
+
+/* Estilos para el contenedor principal de la aplicación */
+.container {
+    background-color: #ffffff; /* Fondo blanco para el contenedor */
+    padding: 30px; /* Relleno interno */
+    border-radius: 12px; /* Esquinas más redondeadas */
+    /* Sombra para dar un efecto de elevación */
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 0 10px -5px rgba(0, 0, 0, 0.04);
+    max-width: 800px; /* Ancho máximo para el contenedor en pantallas grandes */
+    width: 100%; /* Ocupa todo el ancho disponible hasta el max-width */
+    text-align: center; /* Centra el texto dentro del contenedor (por ejemplo, el título) */
+}
+
+/* Estilos para el título principal */
+h1 {
+    color: #1e3a8a; /* Un azul más oscuro para el título */
+    margin-bottom: 25px; /* Margen inferior para separarlo de la lista */
+    font-size: 2.5rem; /* Tamaño de fuente más grande */
+    font-weight: 700; /* Texto en negrita */
+}
+
+/* Estilos para la lista desordenada (<ul>) */
+ul {
+    list-style: none; /* Quitamos los puntos predeterminados de la lista */
+    padding: 0; /* Quitamos el padding predeterminado */
+    margin-top: 20px; /* Margen superior para separarlo del título */
+    border-top: 1px solid #e2e8f0; /* Línea separadora en la parte superior de la lista */
+}
+
+/* Estilos para cada elemento de la lista (<li>) */
+li {
+    background-color: #eff6ff; /* Fondo ligeramente azul para cada elemento */
+    padding: 15px 20px; /* Relleno interno */
+    margin-bottom: 10px; /* Margen inferior para separar los elementos entre sí */
+    border-radius: 8px; /* Esquinas redondeadas para los ítems */
+    text-align: left; /* Alinea el texto de la lista a la izquierda */
+    font-size: 1.1rem; /* Tamaño de fuente para el texto de la tarea */
+    color: #1f2937; /* Color de texto más oscuro para los ítems */
+    /* Transición suave para los efectos de hover */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Sombra sutil para cada ítem */
+}
+
+/* Estilos para cada elemento de la lista cuando el ratón está sobre él (hover) */
+li:hover {
+    transform: translateY(-2px); /* Pequeño efecto de elevación */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra más pronunciada */
+}
+
+/* Estilos para el mensaje de carga */
+.loading {
+    font-size: 1.2rem; /* Tamaño de fuente */
+    color: #64748b; /* Color de texto gris */
+    margin-top: 20px; /* Margen superior */
+}
+
+/* Estilos para el mensaje de error */
+.error {
+    color: #ef4444; /* Rojo para mensajes de error */
+    font-weight: bold; /* Texto en negrita */
+    margin-top: 20px; /* Margen superior */
+}
+
+/* Clase para ocultar elementos */
+.hidden {
+    display: none;
+}
