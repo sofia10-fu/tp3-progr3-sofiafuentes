@@ -1,15 +1,20 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Control de Botones React</title>
+    <title>El juego del botones inzquierdo y del derecho</title>
+    <link rel="stylesheet" href="styles.css" />
+    <!-- Carga React y ReactDOM -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <!-- Babel para interpretar JSX -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
   </head>
   <body>
-    <!-- Este es el div donde se montará tu aplicación React -->
+    <!-- Aquí montaremos nuestra app -->
     <div id="root"></div>
-    <!-- Script de entrada principal de tu aplicación Vite/React -->
-    <script type="module" src="/src/main.jsx"></script>
+
+    <!-- Archivo con nuestro código React -->
+    <script src="05-app.jsx" type="text/babel"></script>
   </body>
 </html>
