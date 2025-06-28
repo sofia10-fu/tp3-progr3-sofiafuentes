@@ -1,34 +1,45 @@
-import React, { useState } from 'react'; // Importamos React y el hook useState para manejar el estado.
-import ReactDOM from 'react-dom/client'; // Importamos ReactDOM para renderizar nuestra aplicación.
+// app.jsx
 
-// Definimos nuestro componente funcional de React.
+// Desestructuramos 'useState' de React. Este es un Hook que nos permite
+// agregar estado a los componentes funcionales.
+const { useState } = React;
+
+// Definimos nuestro componente funcional de React llamado ButtonToggler.
+// Los componentes funcionales son la forma moderna y recomendada de escribir componentes en React.
 function ButtonToggler() {
-    // Declaramos un estado llamado 'activeButton'.
-    // Su valor inicial es 'left', lo que significa que el botón izquierdo estará habilitado al inicio.
-    // 'setActiveButton' es la función que usaremos para actualizar este estado.
+    // Declaramos una variable de estado 'activeButton' y su función actualizadora 'setActiveButton'.
+    // El valor inicial de 'activeButton' es 'left'. Esto significa que el botón "Izquierdo"
+    // estará habilitado por defecto cuando la página cargue.
     const [activeButton, setActiveButton] = useState('left');
 
-    // Esta función se ejecuta cuando se presiona el botón "Izquierdo".
+    // Función que se ejecutará cuando se haga clic en el botón "Izquierdo".
     const handleLeftClick = () => {
-        // Al hacer clic en el botón izquierdo, actualizamos el estado para que el botón activo sea 'right'.
-        // Esto deshabilitará el botón izquierdo y habilitará el derecho.
+        // Al hacer clic en el botón izquierdo, queremos deshabilitarlo y habilitar el derecho.
+        // Para lograr esto, cambiamos el estado de 'activeButton' a 'right'.
+        // React re-renderizará el componente con el nuevo estado.
         setActiveButton('right');
     };
 
-    // Esta función se ejecuta cuando se presiona el botón "Derecho".
+    // Función que se ejecutará cuando se haga clic en el botón "Derecho".
     const handleRightClick = () => {
-        // Al hacer clic en el botón derecho, actualizamos el estado para que el botón activo sea 'left'.
-        // Esto deshabilitará el botón derecho y habilitará el izquierdo.
+        // Al hacer clic en el botón derecho, queremos deshabilitarlo y habilitar el izquierdo.
+        // Para lograr esto, cambiamos el estado de 'activeButton' a 'left'.
+        // React re-renderizará el componente con el nuevo estado.
         setActiveButton('left');
     };
 
+    // El componente retorna el JSX (JavaScript XML) que describe la interfaz de usuario.
     return (
-        <div>
+        // Utilizamos un React.Fragment (<></>) para envolver los dos botones.
+        // Esto nos permite retornar múltiples elementos sin añadir un nodo DOM extra innecesario.
+        <>
             {/* Botón Izquierdo */}
             <button
-                // El botón está deshabilitado si el 'activeButton' NO es 'left'.
+                // La propiedad 'disabled' del botón se establece de forma condicional.
+                // Será 'true' (deshabilitado) si 'activeButton' NO es 'left'.
+                // Será 'false' (habilitado) si 'activeButton' ES 'left'.
                 disabled={activeButton !== 'left'}
-                // Cuando se hace clic, se llama a la función handleLeftClick.
+                // Cuando se hace clic en este botón, se ejecuta la función handleLeftClick.
                 onClick={handleLeftClick}
             >
                 Izquierdo
@@ -36,24 +47,27 @@ function ButtonToggler() {
 
             {/* Botón Derecho */}
             <button
-                // El botón está deshabilitado si el 'activeButton' NO es 'right'.
+                // Similar al botón izquierdo, 'disabled' es 'true' si 'activeButton' NO es 'right'.
+                // Será 'false' si 'activeButton' ES 'right'.
                 disabled={activeButton !== 'right'}
-                // Cuando se hace clic, se llama a la función handleRightClick.
+                // Cuando se hace clic en este botón, se ejecuta la función handleRightClick.
                 onClick={handleRightClick}
             >
                 Derecho
             </button>
-        </div>
+        </>
     );
 }
 
-// Obtenemos el elemento DOM donde se montará nuestra aplicación de React.
-const root = ReactDOM.createRoot(document.getElementById('root'));
+// Obtenemos una referencia al elemento DOM con el id 'root' en nuestro HTML.
+const container = document.getElementById('root');
+// Creamos una "raíz" de React. Esta es la forma moderna de montar aplicaciones React.
+const root = ReactDOM.createRoot(container);
 
-// Renderizamos el componente ButtonToggler dentro del elemento 'root'.
+// Renderizamos nuestro componente ButtonToggler dentro de la raíz de React.
+// React.StrictMode es una herramienta para destacar problemas potenciales en la aplicación
+// durante el desarrollo (no tiene efecto en producción).
 root.render(
-    // StrictMode es una herramienta para destacar problemas potenciales en una aplicación.
-    // No renderiza ninguna UI visible. Activa comprobaciones adicionales y advertencias para sus descendientes.
     <React.StrictMode>
         <ButtonToggler />
     </React.StrictMode>
