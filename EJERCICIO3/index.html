@@ -1,16 +1,23 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tareas Completadas - Mi App</title>
-  </head>
-  <body>
-    <!-- Este es el div donde se montará tu aplicación React -->
-    <div id="root"></div>
-    <!-- Script de entrada principal de tu aplicación Vite/React -->
-    <!-- Este archivo (main.jsx) es el punto de inicio de tu aplicación React. -->
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tareas Completadas de JSONPlaceholder</title>
+    <!-- Incluimos Tailwind CSS desde CDN para estilos utilitarios -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Enlazamos nuestro archivo de estilos CSS personalizado -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Tareas Completadas</h1>
+        <div id="loadingMessage" class="loading">Cargando tareas...</div>
+        <div id="errorMessage" class="error hidden"></div>
+        <ul id="todos-list">
+            <!-- Las tareas completadas se insertarán aquí dinámicamente con JavaScript -->
+        </ul>
+    </div>
+    <script src="script.js"></script>
+</body>
 </html>
