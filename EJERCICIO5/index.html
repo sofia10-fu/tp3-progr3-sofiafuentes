@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Operaciones</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script crossorigin src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <style>
+        /* Estilos CSS generales para la página */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh; /* Ocupa toda la altura de la ventana */
+            margin: 0;
+            background-color: #eef2f5; /* Fondo suave */
+            color: #333;
+            box-sizing: border-box;
+        }
+
+        /* Contenedor principal de la aplicación React */
+        #root {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* Sombra más pronunciada */
+            width: 100%;
+            max-width: 450px; /* Ancho máximo para el formulario */
+            text-align: center;
+        }
+
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 25px;
+            font-size: 2em;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
+        }
+
+        /* Estilos para los grupos de formulario (etiqueta + input/select) */
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left; /* Alinea el texto y los campos a la izquierda */
+        }
+
+        label {
+            display: block; /* Cada etiqueta en su propia línea */
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        input[type="number"],
+        select {
+            width: calc(100% - 22px); /* Ancho completo menos padding y borde */
+            padding: 12px 10px;
+            border: 1px solid #ccd6e0;
+            border-radius: 8px;
+            font-size: 1.05em;
+            box-sizing: border-box;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        input[type="number"]:focus,
+        select:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+            outline: none;
+        }
+
+        button {
+            background-color: #007bff; /* Azul para el botón principal */
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.2em;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3);
+        }
+
+        button:hover:not(:disabled) {
+            background-color: #0056b3; /* Azul más oscuro al pasar el mouse */
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 123, 255, 0.4);
+        }
+
+        button:active:not(:disabled) {
+            transform: translateY(0);
+            box-shadow: 0 2px 5px rgba(0, 123, 255, 0.2);
+        }
+
+        button:disabled {
+            background-color: #cccccc;
+            color: #666666;
+            cursor: not-allowed;
+            box-shadow: none;
+        }
+
+        /* Estilos para el resultado */
+        .resultado {
+            margin-top: 30px;
+            padding: 20px;
+            border: 1px solid #ced4da;
+            border-radius: 8px;
+            background-color: #f8f9fa;
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #28a745; /* Verde para el resultado */
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .error-message {
+            margin-top: 15px;
+            color: #dc3545; /* Rojo para mensajes de error */
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel" src="app.jsx"></script>
+</body>
+</html>
