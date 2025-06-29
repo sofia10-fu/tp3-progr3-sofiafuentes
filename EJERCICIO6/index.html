@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de IMC con React</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script crossorigin src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <style>
+        /* Estilos CSS generales para la página */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh; /* Ocupa toda la altura de la ventana */
+            margin: 0;
+            background-color: #f4f7f6; /* Fondo gris claro */
+            color: #333; /* Color de texto principal */
+            box-sizing: border-box; /* Incluye padding y border en el ancho/alto total */
+        }
+
+        /* Contenedor principal de la aplicación React */
+        #root {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+            width: 100%;
+            max-width: 400px; /* Ancho máximo para el formulario */
+            text-align: center;
+        }
+
+        h1 {
+            color: #2c3e50; /* Color oscuro para el título */
+            margin-bottom: 25px;
+            font-size: 1.8em;
+        }
+
+        label {
+            display: block; /* Cada etiqueta en su propia línea */
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #555;
+            text-align: left; /* Alinea el texto de la etiqueta a la izquierda */
+        }
+
+        input[type="number"] {
+            width: calc(100% - 20px); /* Ancho completo menos padding */
+            padding: 12px 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 1em;
+            box-sizing: border-box; /* Para que el padding no aumente el ancho */
+        }
+
+        button {
+            background-color: #28a745; /* Verde para el botón */
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1.1em;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 3px 8px rgba(40, 167, 69, 0.3);
+        }
+
+        button:hover {
+            background-color: #218838; /* Verde más oscuro al pasar el mouse */
+            transform: translateY(-2px); /* Efecto de "levantamiento" */
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        /* Estilos para el mensaje del IMC */
+        .resultado-imc {
+            margin-top: 25px;
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 1.2em;
+            font-weight: bold;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Colores específicos según el nivel de IMC */
+        .bajo {
+            background-color: #fff3cd; /* Amarillo claro */
+            color: #856404; /* Texto amarillo oscuro */
+            border: 1px solid #ffeeba;
+        }
+
+        .normal {
+            background-color: #d4edda; /* Verde claro */
+            color: #155724; /* Texto verde oscuro */
+            border: 1px solid #c3e6cb;
+        }
+
+        .sobrepeso {
+            background-color: #ffeeba; /* Naranja claro */
+            color: #856404; /* Texto naranja oscuro */
+            border: 1px solid #ffda6a;
+        }
+
+        .obesidad {
+            background-color: #f8d7da; /* Rojo claro */
+            color: #721c24; /* Texto rojo oscuro */
+            border: 1px solid #f5c6cb;
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel" src="app.jsx"></script>
+</body>
+</html>
